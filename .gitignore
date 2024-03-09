@@ -31,3 +31,4 @@ db/
 *output_files/
 *greybox_tmp/
 PLLJ_PLLSPE_INFO.txt
+QuartusProject/project/control_btns_probes.sopcinfo

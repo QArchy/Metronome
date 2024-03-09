@@ -7,31 +7,48 @@ module metronome(
 	input i_btn_minus_1,
 	input i_btn_minus_5,
 	
-	output [2:0] o_bpm_led
+	output reg 			o_trigger,
+	output 		[33:0] 	o_bpm_counter
 );
-	
-	wire 		trigger;
-	wire [33:0] bpm_counter;
-	bpm_trigger bpm_trigger_inst(
-		.i_clk(i_clk),					//	input i_clk,			
-		.i_reset(i_reset),				//	input i_reset,			
+
+	wire bpm_changed;
+	bpm_counter bpm_counter_inst(
+		.i_clk(i_clk),					//	input i_clk,
+		.i_reset(i_reset),				//	input i_reset,
 										//	
-		.i_btn_plus_1(i_btn_plus_1),	//	input i_btn_plus_1,		
-		.i_btn_plus_5(i_btn_plus_5),	//	input i_btn_plus_5,		
-		.i_btn_minus_1(i_btn_minus_1),	//	input i_btn_minus_1,	
+		.i_btn_plus_1(i_btn_plus_1),	//	input i_btn_plus_1,
+		.i_btn_plus_5(i_btn_plus_5),	//	input i_btn_plus_5,
+		.i_btn_minus_1(i_btn_minus_1),	//	input i_btn_minus_1,
 		.i_btn_minus_5(i_btn_minus_5),	//	input i_btn_minus_5,
 										//	
-		.o_trigger(trigger),			//	output reg 			o_trigger	
-		.o_bpm_counter(bpm_counter)		//  output 		[33:0] 	o_bpm_counter;
+		.o_bpm_counter(o_bpm_counter),	//	output reg 	[33:0] 	o_bpm_counter
+		.o_bpm_changed(bpm_changed)		//	output reg 		 	o_bpm_changed
 	);
 	
-	led_light_holder led_light_holder_inst(
-		.i_clk(i_clk),				//	input 				i_clk,		
-		.i_reset(i_reset),			//	input 				i_reset,	
-		.i_trigger(trigger),		//	input 				i_trigger,	
-		.o_bpm_led(o_bpm_led[2:1])	//	output reg 	[1:0] 	o_bpm_led			
+	wire [33:0] bpm_trigger_value;
+	bpm_trigger_value bpm_trigger_value_inst(
+		.i_clk(i_clk),							//	input 				i_clk,
+		.i_reset(i_reset),						//	input 				i_reset,
+												//	
+		.i_bpm_counter(o_bpm_counter),			//	input 		[33:0]	i_bpm_counter,
+												//	
+		.o_bpm_trigger_value(bpm_trigger_value)	//	output	reg	[33:0]	o_bpm_trigger_value
 	);
 	
-	assign o_bpm_led[0] = (bpm_counter >= 600) ? 1: 0;
+	reg [33:0] counter;
+	
+	always @(posedge i_clk, posedge i_reset) begin
+		if (i_reset) begin
+			counter <= 0;
+		end else begin
+			if (counter == bpm_trigger_value) begin
+				o_trigger 	<= 1;
+				counter 	<= 1;
+			end else begin
+				counter 	<= bpm_changed ? 0: counter + 1;
+				o_trigger 	<= 0;
+			end
+		end
+	end
 	
 endmodule

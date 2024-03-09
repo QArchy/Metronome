@@ -45,17 +45,30 @@ module top(
 	);
 	
 	wire global_reset = btn_reset || ~pll_locked;
-	 
+	
+	wire 		trigger;
+	wire [33:0] bpm_counter;
 	metronome metronome_inst(
-		.i_clk(pll_clk),						//	input i_clk,
-		.i_reset(global_reset),					//	input i_reset,
+		.i_clk(pll_clk),						//	input i_clk,			
+		.i_reset(global_reset),					//	input i_reset,			
 												//	
-		.i_btn_plus_1(btn_metronome_plus_1),	//	input i_btn_plus_1,
-		.i_btn_plus_5(btn_metronome_plus_5),	//	input i_btn_plus_5,
-		.i_btn_minus_1(btn_metronome_minus_1),	//	input i_btn_minus_1,
+		.i_btn_plus_1(btn_metronome_plus_1),	//	input i_btn_plus_1,		
+		.i_btn_plus_5(btn_metronome_plus_5),	//	input i_btn_plus_5,		
+		.i_btn_minus_1(btn_metronome_minus_1),	//	input i_btn_minus_1,	
 		.i_btn_minus_5(btn_metronome_minus_5),	//	input i_btn_minus_5,
 												//	
-		.o_bpm_led(led[3:1])					//	output [2:0] bpm_led
+		.o_trigger(trigger),					//	output reg 			o_trigger,	
+		.o_bpm_counter(bpm_counter)				//  output 		[33:0] 	o_bpm_counter
+	); 
+	
+	metronome_display_fpga metronome_display_fpga_inst(
+		.i_clk(pll_clk),				//	input 			i_clk,			
+		.i_reset(global_reset),			//	input 			i_reset,		
+										//									
+		.i_trigger(trigger),			//	input 			i_trigger,		
+		.i_bpm_counter(bpm_counter),	//	input 	[33:0] 	i_bpm_counter,
+										//										
+		.o_bpm_led(led[3:1])			//	output 	[2:0] 	o_bpm_led		
 	);
 	
 	life_led life_led_inst(
