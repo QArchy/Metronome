@@ -4,6 +4,8 @@
 *.cmp
 *.done
 *.eqn
+*.vo
+*.sft
 *.hex
 *.html
 *.jdi
@@ -18,11 +20,11 @@
 *.summary
 *.tcl
 
-*/db/
-*/incremental_db/
-*/simulation/
-*/timing/
-*/testbench/
+*db/
+*incremental_db/
+*simulation/
+*timing/
+*testbench/
 */*_sim/
 incremental_db/
 db/
