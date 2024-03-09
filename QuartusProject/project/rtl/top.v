@@ -4,7 +4,10 @@ module top(
 	output 			o_uart_tx,
 	input 			i_uart_rx,
 	
-	output	[3:0]	o_led_n
+	output	[3:0]	o_led_n,
+	
+	output 	[6:0] 	o_ssi_segments,	
+	output 	[3:0] 	o_ssi_code		
 );
 	wire [3:0] led;
 	assign o_led_n = ~led;
@@ -12,9 +15,9 @@ module top(
 	wire pll_clk;
 	wire pll_locked;
 	pll pll_inst(
-		.inclk0(i_clk),			//	input	  inclk0;
-		.c0(pll_clk),			//	output	  c0;
-		.locked(pll_locked),	//	output	  locked;
+		.inclk0(i_clk),		//	input	  inclk0;
+		.c0(pll_clk),		//	output	  c0;
+		.locked(pll_locked)	//	output	  locked;
 	);
 	
 	wire [4:0] probe_control_btns;
@@ -62,13 +65,15 @@ module top(
 	); 
 	
 	metronome_display_fpga metronome_display_fpga_inst(
-		.i_clk(pll_clk),				//	input 			i_clk,			
-		.i_reset(global_reset),			//	input 			i_reset,		
-										//									
-		.i_trigger(trigger),			//	input 			i_trigger,		
-		.i_bpm_counter(bpm_counter),	//	input 	[33:0] 	i_bpm_counter,
-										//										
-		.o_bpm_led(led[3:1])			//	output 	[2:0] 	o_bpm_led		
+		.i_clk(pll_clk),					//	input 			i_clk,			
+		.i_reset(global_reset),				//	input 			i_reset,		
+											//									
+		.i_trigger(trigger),				//	input 			i_trigger,		
+		.i_bpm_counter(bpm_counter),		//	input 	[33:0] 	i_bpm_counter,
+											//										
+		.o_bpm_led(led[3:1]),				//	output 	[2:0] 	o_bpm_led		
+		.o_ssi_segments(o_ssi_segments),	//	output 	[6:0] 	o_ssi_segments,	
+		.o_ssi_code(o_ssi_code)				//	output 	[3:0] 	o_ssi_code		
 	);
 	
 	life_led life_led_inst(
