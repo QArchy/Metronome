@@ -40,6 +40,7 @@ QuartusProject/project/control_btns_probes.sopcinfo
 # ----------------------------------------------------------------------------
 
 *debug/
+*build-Metronome-Desktop_Qt_5_15_2_MinGW_32_bit-Release/
 
 *~
 *.autosave
