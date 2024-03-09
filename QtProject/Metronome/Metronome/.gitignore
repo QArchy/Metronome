@@ -1,45 +1,5 @@
-# QUARTUS
+# This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
-
-*_generation_script*
-*_inst.vhd
-*.bak
-*.cmp
-*.done
-*.eqn
-*.vo
-*.sft
-*.hex
-*.html
-*.jdi
-*.pin
-*.ptf.*
-*.qar
-*.qarlog
-*.qws
-*.rpt
-*.smsg
-*.sopc_builder
-*.summary
-*.tcl
-
-*db/
-*incremental_db/
-*simulation/
-*timing/
-*testbench/
-*/*_sim/
-incremental_db/
-db/
-*output_files/
-*greybox_tmp/
-PLLJ_PLLSPE_INFO.txt
-QuartusProject/project/control_btns_probes.sopcinfo
-
-# QT
-# ----------------------------------------------------------------------------
-
-*debug/
 
 *~
 *.autosave
@@ -51,7 +11,6 @@ QuartusProject/project/control_btns_probes.sopcinfo
 *.orig
 *.rej
 *.so
-*.idx
 *.so.*
 *_pch.h.cpp
 *_resource.rc
@@ -110,5 +69,6 @@ CMakeLists.txt.user*
 
 # Binaries
 # --------
-#*.dll
-#*.exe
+*.dll
+*.exe
+
