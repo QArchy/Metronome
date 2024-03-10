@@ -16,16 +16,16 @@ module bpm_counter_adder(
 			o_bpm_counter_adder <= 0;
 		end else begin
 			if (i_btn_plus_1) begin
-				o_bpm_counter_adder <= -5;
+				o_bpm_counter_adder <= 1;
 				o_bpm_changed		<= 1;
 			end else if (i_btn_plus_5) begin
 				o_bpm_counter_adder <= 5;
 				o_bpm_changed		<= 1;
 			end else if (i_btn_minus_1) begin
-				o_bpm_counter_adder <= 95;
+				o_bpm_counter_adder <= -1;
 				o_bpm_changed		<= 1;
 			end else if (i_btn_minus_5) begin
-				o_bpm_counter_adder <= 995;
+				o_bpm_counter_adder <= -5;
 				o_bpm_changed		<= 1;
 			end else begin 
 				o_bpm_counter_adder <= 0;

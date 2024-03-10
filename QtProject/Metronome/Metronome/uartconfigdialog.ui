@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>196</width>
-    <height>282</height>
+    <width>184</width>
+    <height>72</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -16,10 +16,16 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>184</width>
+    <height>72</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
-    <width>196</width>
-    <height>282</height>
+    <width>184</width>
+    <height>72</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -30,28 +36,6 @@
     <widget class="QLabel" name="PortNameLabel">
      <property name="text">
       <string>Port Name</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0" colspan="2">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-     <property name="centerButtons">
-      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -74,126 +58,26 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="OpenModeLabel">
-     <property name="text">
-      <string>Open Mode</string>
+   <item row="1" column="0" colspan="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="BaudRateLabel">
-     <property name="text">
-      <string>Baud Rate</string>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
      </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="DataBitsLabel">
-     <property name="text">
-      <string>Data Bits</string>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="OpenModeComboBox">
-     <item>
-      <property name="text">
-       <string>Read</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Write</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Read/Write</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QComboBox" name="BaudRateComboBox">
-     <item>
-      <property name="text">
-       <string>115200</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QComboBox" name="DataBitsComboBox">
-     <item>
-      <property name="text">
-       <string>8</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="ParityLabel">
-     <property name="text">
-      <string>Parity</string>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="StopBitsLabel">
-     <property name="text">
-      <string>Stop Bits</string>
+     <property name="centerButtons">
+      <bool>true</bool>
      </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="FlowControlLabel">
-     <property name="text">
-      <string>Flow Control</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="ReadBufferSizeLabel">
-     <property name="text">
-      <string>Read Buffer Size</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QComboBox" name="ParityComboBox">
-     <item>
-      <property name="text">
-       <string>None</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QComboBox" name="StopBitsComboBox">
-     <item>
-      <property name="text">
-       <string>1</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QComboBox" name="FlowControlComboBox">
-     <item>
-      <property name="text">
-       <string>None</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <widget class="QComboBox" name="ReadBufferSizeComboBox">
-     <item>
-      <property name="text">
-       <string>768</string>
-      </property>
-     </item>
     </widget>
    </item>
   </layout>

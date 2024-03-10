@@ -1,7 +1,6 @@
 module top(
 	input 			i_clk,
 	
-	output 			o_uart_tx,
 	input 			i_uart_rx,
 	
 	output	[3:0]	o_led_n,
@@ -13,10 +12,12 @@ module top(
 	assign o_led_n = ~led;
 	
 	wire pll_clk;
+	wire pll_clk_uart;
 	wire pll_locked;
 	pll pll_inst(
 		.inclk0(i_clk),		//	input	  inclk0;
 		.c0(pll_clk),		//	output	  c0;
+		.c1(pll_clk_uart),	//	output	  c1;
 		.locked(pll_locked)	//	output	  locked;
 	);
 	
@@ -49,6 +50,16 @@ module top(
 	
 	wire global_reset = btn_reset || ~pll_locked;
 	
+	wire uart_msg;
+	wire [31:0] uart_bpm_count;
+	uart_receive_bpm uart_receive_bpm_inst(
+		.i_clk(pll_clk_uart),			//	input 				i_clk,
+		.i_reset(global_reset),			//	input 				i_reset,			
+		.i_uart_rx(i_uart_rx),			//	input 				i_uart_rx,			
+		.o_from_uart_ready(uart_msg),	//	output reg 			o_from_uart_ready,
+		.o_bpm_count(uart_bpm_count)	//	output reg 	[31:0] 	o_bpm_count
+	);
+	
 	wire 		trigger;
 	wire [33:0] bpm_counter;
 	metronome metronome_inst(
@@ -59,6 +70,9 @@ module top(
 		.i_btn_plus_5(btn_metronome_plus_5),	//	input i_btn_plus_5,		
 		.i_btn_minus_1(btn_metronome_minus_1),	//	input i_btn_minus_1,	
 		.i_btn_minus_5(btn_metronome_minus_5),	//	input i_btn_minus_5,
+												//
+		.i_uart_msg(uart_msg),					//	input i_uart_msg,
+		.i_uart_bpm_count(uart_bpm_count),		//	input [31:0] i_uart_bpm_count,
 												//	
 		.o_trigger(trigger),					//	output reg 			o_trigger,	
 		.o_bpm_counter(bpm_counter)				//  output 		[33:0] 	o_bpm_counter

@@ -7,7 +7,7 @@
 #include <QtMath>
 #include "uartconfigdialog.h"
 #include "serialmanager.h"
-#include "dds.h"
+#include "metronome.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,24 +22,15 @@ public:
     ~MainWindow();
 
 private:
-    // ui windows
     Ui::MainWindow *ui;
     UartConfigDialog *uartConfigDialog;
-    // class instances
     SerialManager* serialManager;
-    DDS* dds;
+    Metronome* metronome;
 
 private slots:
-    // slots to acquire dds configuration
-    void slot_frequencyTextChanged(const QString& str);
-    void slot_amplitudeTextChanged(const QString& str);
-    void slot_waveformCheckChanged(bool checked);
-    // slots dedicated to uart configuration
+    void slot_BpmTextChanged(const QString& str);
     void slot_showUartConfig(bool checked = false);
     void slot_uartGetConfig(uartConfig uartConf);
-
-    void on_MaxVoutLineEdit_textChanged(const QString &arg1);
-
 signals:
     void sendCommand();
 };

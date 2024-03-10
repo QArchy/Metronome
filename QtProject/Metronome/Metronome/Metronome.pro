@@ -10,15 +10,15 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    dds.cpp \
     main.cpp \
     mainwindow.cpp \
+    metronome.cpp \
     serialmanager.cpp \
     uartconfigdialog.cpp
 
 HEADERS += \
-    dds.h \
     mainwindow.h \
+    metronome.h \
     serialmanager.h \
     uartconfigdialog.h
 
@@ -26,9 +26,10 @@ FORMS += \
     mainwindow.ui \
     uartconfigdialog.ui
 
-RESOURCES = app.qrc
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    Metronome.pro.user

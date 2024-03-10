@@ -6,15 +6,6 @@
 #include <QSerialPort>
 #include <QSerialportInfo>
 
-enum ReadState {
-    SOM = 1,
-    SIGNAL_DATA_32_24 = 2,
-    SIGNAL_DATA_23_16 = 3,
-    SIGNAL_DATA_15_8 = 4,
-    SIGNAL_DATA_7_0 = 5,
-    EOM = 6,
-};
-
 struct uartConfig {
     QString portName = "COM4";
     QIODevice::OpenModeFlag openMode = QIODevice::OpenModeFlag::ReadWrite;
@@ -31,9 +22,6 @@ class SerialManager: public QObject {
 
 private:
     QSerialPort* port;
-    qreal plotData;
-    quint8 asciiData;
-
 public:
     SerialManager();
     ~SerialManager();
