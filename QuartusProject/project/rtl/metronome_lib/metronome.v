@@ -2,10 +2,13 @@ module metronome(
 	input i_clk,
 	input i_reset,
 	
-	input i_btn_plus_1,
-	input i_btn_plus_5,
-	input i_btn_minus_1,
+	input i_btn_plus_1,		
+	input i_btn_plus_5,		
+	input i_btn_plus_5_hold,
+	input i_btn_minus_1,	
 	input i_btn_minus_5,
+	input i_btn_minus_5_hold,
+
 	
 	input i_uart_msg,
 	input [31:0] i_uart_bpm_count,
@@ -16,19 +19,21 @@ module metronome(
 	
 	wire bpm_changed;
 	bpm_counter bpm_counter_inst(
-		.i_clk(i_clk),							//	input i_clk,
-		.i_reset(i_reset),						//	input i_reset,
-												//	
-		.i_btn_plus_1(i_btn_plus_1),			//	input i_btn_plus_1,
-		.i_btn_plus_5(i_btn_plus_5),			//	input i_btn_plus_5,
-		.i_btn_minus_1(i_btn_minus_1),			//	input i_btn_minus_1,
-		.i_btn_minus_5(i_btn_minus_5),			//	input i_btn_minus_5,
-												//
-		.i_uart_msg(i_uart_msg),				//	input i_uart_msg,
-		.i_uart_bpm_count(i_uart_bpm_count),	//	input [31:0] i_uart_bpm_count,
-												//	
-		.o_bpm_counter(o_bpm_counter),			//	output reg 	[33:0] 	o_bpm_counter
-		.o_bpm_changed(bpm_changed)				//	output reg 		 	o_bpm_changed
+		.i_clk(i_clk),										//	input i_clk,
+		.i_reset(i_reset),									//	input i_reset,
+															//	
+		.i_btn_plus_1(i_btn_plus_1),						//	input i_btn_plus_1,		
+		.i_btn_plus_5(i_btn_plus_5),						//	input i_btn_plus_5,		
+		.i_btn_plus_5_hold(i_btn_plus_5_hold),				//	input i_btn_plus_5_hold,
+		.i_btn_minus_1(i_btn_minus_1),						//	input i_btn_minus_1,	
+		.i_btn_minus_5(i_btn_minus_5),						//	input i_btn_minus_5,										//
+		.i_btn_minus_5_hold(i_btn_minus_5_hold),			//	input i_btn_minus_5_hold,										
+															//
+		.i_uart_msg(i_uart_msg),							//	input i_uart_msg,
+		.i_uart_bpm_count(i_uart_bpm_count),				//	input [31:0] i_uart_bpm_count,
+															//	
+		.o_bpm_counter(o_bpm_counter),						//	output reg 	[33:0] 	o_bpm_counter
+		.o_bpm_changed(bpm_changed)							//	output reg 		 	o_bpm_changed
 	);
 	
 	wire [33:0] bpm_trigger_value;

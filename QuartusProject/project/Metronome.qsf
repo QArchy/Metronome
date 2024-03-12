@@ -62,7 +62,7 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_location_assignment PIN_23 -to i_clk
 set_global_assignment -name ENABLE_SIGNALTAP ON
-set_global_assignment -name USE_SIGNALTAP_FILE ../dbg/signal_tap_uart.stp
+set_global_assignment -name USE_SIGNALTAP_FILE ../dbg/signal_tap_input.stp
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to control_btns[3]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to control_btns[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to control_btns[1]
@@ -123,7 +123,6 @@ set_global_assignment -name VERILOG_FILE rtl/ip/uart/uart_rx.v
 set_global_assignment -name VERILOG_FILE rtl/uart_receive_bpm.v
 set_global_assignment -name VERILOG_FILE rtl/metronome_lib/metronome.v
 set_global_assignment -name VERILOG_FILE rtl/metronome_lib/bpm_trigger_value.v
-set_global_assignment -name VERILOG_FILE rtl/metronome_lib/bpm_counter_adder.v
 set_global_assignment -name VERILOG_FILE rtl/metronome_lib/bpm_counter.v
 set_global_assignment -name VERILOG_FILE rtl/input_lib/btn_posedge.v
 set_global_assignment -name VERILOG_FILE rtl/input_lib/btn_debouncer.v
@@ -144,167 +143,417 @@ set_global_assignment -name SOURCE_FILE ../dbg/source_probe_btns.spf
 set_global_assignment -name QIP_FILE rtl/ip/math/division_34_34/bpm_divider.qip
 set_global_assignment -name QIP_FILE rtl/ip/math/dividion_of_14bit_by_10/division_10.qip
 set_global_assignment -name SIGNALTAP_FILE ../dbg/signal_tap_uart.stp
-set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_ENTITY_NAME sld_signaltap -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to "pll:pll_inst|c0" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[0] -to i_uart_rx -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[1] -to "uart_receive_bpm:uart_receive_bpm_inst|i_reset" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[2] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[0]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[3] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[10]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[4] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[11]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[5] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[12]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[6] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[13]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[7] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[14]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[8] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[15]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[9] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[16]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[10] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[17]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[11] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[18]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[12] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[19]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[13] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[1]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[14] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[20]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[15] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[21]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[16] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[22]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[17] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[23]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[18] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[24]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[19] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[25]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[20] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[26]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[21] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[27]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[22] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[28]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[23] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[29]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[24] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[2]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[25] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[30]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[26] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[31]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[27] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[3]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[28] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[4]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[29] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[5]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[30] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[6]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[31] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[7]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[32] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[8]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[33] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[9]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[34] -to "uart_receive_bpm:uart_receive_bpm_inst|o_from_uart_ready" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[35] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READY_READ" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[36] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_BPM_15_8" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[37] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_BPM_23_16" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[38] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_BPM_31_24" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[39] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_BPM_7_0" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[40] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_EOM" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[41] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_SOM" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[0] -to i_uart_rx -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[1] -to "uart_receive_bpm:uart_receive_bpm_inst|i_reset" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[2] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[0]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[3] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[10]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[4] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[11]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[5] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[12]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[6] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[13]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[7] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[14]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[8] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[15]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[9] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[16]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[10] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[17]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[11] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[18]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[12] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[19]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[13] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[1]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[14] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[20]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[15] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[21]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[16] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[22]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[17] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[23]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[18] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[24]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[19] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[25]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[20] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[26]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[21] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[27]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[22] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[28]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[23] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[29]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[24] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[2]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[25] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[30]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[26] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[31]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[27] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[3]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[28] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[4]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[29] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[5]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[30] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[6]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[31] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[7]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[32] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[8]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[33] -to "uart_receive_bpm:uart_receive_bpm_inst|o_bpm_count[9]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[34] -to "uart_receive_bpm:uart_receive_bpm_inst|o_from_uart_ready" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[35] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READY_READ" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[36] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_BPM_15_8" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[37] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_BPM_23_16" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[38] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_BPM_31_24" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[39] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_BPM_7_0" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[40] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_EOM" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[41] -to "uart_receive_bpm:uart_receive_bpm_inst|readState.UART_READ_SOM" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_BLOCK_TYPE=AUTO" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_INFO=805334528" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_POWER_UP_TRIGGER=0" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ATTRIBUTE_MEM_MODE=OFF" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_FLOW_USE_GENERATED=0" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_BITS=11" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_BUFFER_FULL_STOP=1" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_CURRENT_RESOURCE_WIDTH=1" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INCREMENTAL_ROUTING=1" -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[1] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[3] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[5] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[6] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[7] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[9] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[10] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[11] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[12] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[15] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[16] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[18] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[20] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[21] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[23] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[26] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL=1" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_IN_ENABLED=0" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_PIPELINE=0" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_PIPELINE=0" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_COUNTER_PIPELINE=0" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SEGMENT_SIZE=512" -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[19] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[28] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[29] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[30] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[31] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SAMPLE_DEPTH=512" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[42] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[0]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[43] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[1]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[44] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[2]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[45] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[3]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[46] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[4]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[47] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[5]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[48] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[6]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[49] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[7]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[50] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_DV" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[42] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[0]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[43] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[1]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[44] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[2]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[45] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[3]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[46] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[4]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[47] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[5]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[48] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[6]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[49] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_Byte[7]" -section_id signal_tap_uart
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[50] -to "uart_receive_bpm:uart_receive_bpm_inst|uart_rx:UART_RX_INST|o_Rx_DV" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_DATA_BITS=51" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=51" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=51" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" -section_id signal_tap_uart
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=176" -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[0] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[2] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[4] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[8] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[13] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[14] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[17] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[22] -to signal_tap_uart|vcc -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[25] -to signal_tap_uart|gnd -section_id signal_tap_uart
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[27] -to signal_tap_uart|gnd -section_id signal_tap_uart
+set_global_assignment -name VERILOG_FILE rtl/input_lib/btn_hold_activator.v
+set_global_assignment -name SIGNALTAP_FILE ../dbg/signal_tap_input.stp
+set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_ENTITY_NAME sld_signaltap -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to "pll:pll_inst|c0" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[0] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_1|btn_start_wait" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[1] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_1|i_btn_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[2] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_1|o_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[3] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_5|btn_start_wait" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[4] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_5|i_btn_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[5] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_5|o_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[6] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_1|btn_start_wait" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[7] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_1|i_btn_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[8] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_1|o_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[9] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_5|btn_start_wait" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[10] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_5|i_btn_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[11] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_5|o_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[12] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_reset|btn_start_wait" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[13] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_reset|i_btn_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[14] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_reset|o_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[15] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|btn_pressed" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[16] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|i_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[17] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|i_btn_pressed" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[18] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|o_btn_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[19] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[20] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[10]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[21] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[11]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[22] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[12]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[23] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[13]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[24] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[14]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[25] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[15]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[26] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[16]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[27] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[17]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[28] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[18]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[29] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[19]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[30] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[31] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[20]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[32] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[21]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[33] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[22]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[34] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[23]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[35] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[24]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[36] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[25]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[37] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[26]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[38] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[27]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[39] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[40] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[41] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[4]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[42] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[5]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[43] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[6]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[44] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[7]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[45] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[8]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[46] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[9]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[47] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|btn_pressed" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[48] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|i_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[49] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|i_btn_pressed" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[50] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|o_btn_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[51] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[52] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[10]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[53] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[11]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[54] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[12]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[55] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[13]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[56] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[14]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[57] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[15]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[58] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[16]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[59] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[17]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[60] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[18]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[61] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[19]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[62] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[63] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[20]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[64] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[21]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[65] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[22]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[66] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[23]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[67] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[24]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[68] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[25]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[69] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[26]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[70] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[27]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[71] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[72] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[73] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[4]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[74] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[5]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[75] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[6]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[76] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[7]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[77] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[8]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[78] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[9]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[79] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_btn_reset" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[80] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_btn_reset_prev" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[81] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[82] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[83] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[84] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[85] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns_prev[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[86] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns_prev[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[87] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns_prev[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[88] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns_prev[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[89] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|o_btn_reset_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[90] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|o_control_btns_posedge[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[91] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|o_control_btns_posedge[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[92] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|o_control_btns_posedge[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[93] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|o_control_btns_posedge[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[94] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_minus_1" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[95] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_minus_5" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[96] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_minus_5_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[97] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_plus_1" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[98] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_plus_5" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[99] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_plus_5_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[100] -to "btn_debouncer:btn_debouncer_inst|o_btn_reset" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[101] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[102] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[10]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[103] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[11]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[104] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[12]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[105] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[13]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[106] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[14]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[107] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[15]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[108] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[16]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[109] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[17]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[110] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[18]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[111] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[19]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[112] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[113] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[20]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[114] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[21]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[115] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[22]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[116] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[23]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[117] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[24]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[118] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[25]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[119] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[26]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[120] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[27]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[121] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[28]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[122] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[29]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[123] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[124] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[30]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[125] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[31]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[126] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[32]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[127] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[33]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[128] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[129] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[4]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[130] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[5]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[131] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[6]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[132] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[7]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[133] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[8]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[134] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[9]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[135] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_minus_1" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[136] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_minus_5" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[137] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_minus_5_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[138] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_plus_1" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[139] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_plus_5" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[140] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_plus_5_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[141] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[142] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[10]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[143] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[11]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[144] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[12]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[145] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[13]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[146] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[14]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[147] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[15]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[148] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[16]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[149] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[17]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[150] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[18]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[151] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[19]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[152] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[153] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[20]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[154] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[21]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[155] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[22]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[156] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[23]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[157] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[24]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[158] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[25]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[159] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[26]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[160] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[27]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[161] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[28]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[162] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[29]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[163] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[164] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[30]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[165] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[31]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[166] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[32]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[167] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[33]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[168] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[169] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[4]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[170] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[5]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[171] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[6]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[172] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[7]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[173] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[8]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[174] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[9]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[0] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_1|btn_start_wait" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[1] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_1|i_btn_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[2] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_1|o_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[3] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_5|btn_start_wait" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[4] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_5|i_btn_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[5] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_minus_5|o_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[6] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_1|btn_start_wait" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[7] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_1|i_btn_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[8] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_1|o_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[9] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_5|btn_start_wait" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[10] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_5|i_btn_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[11] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_plus_5|o_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[12] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_reset|btn_start_wait" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[13] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_reset|i_btn_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[14] -to "btn_debouncer:btn_debouncer_inst|btn_activator:btn_activator_reset|o_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[15] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|btn_pressed" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[16] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|i_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[17] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|i_btn_pressed" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[18] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|o_btn_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[19] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[20] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[10]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[21] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[11]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[22] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[12]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[23] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[13]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[24] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[14]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[25] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[15]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[26] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[16]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[27] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[17]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[28] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[18]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[29] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[19]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[30] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[31] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[20]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[32] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[21]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[33] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[22]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[34] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[23]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[35] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[24]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[36] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[25]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[37] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[26]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[38] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[27]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[39] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[40] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[41] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[4]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[42] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[5]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[43] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[6]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[44] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[7]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[45] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[8]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[46] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_minus_5|one_second_counter[9]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[47] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|btn_pressed" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[48] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|i_btn" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[49] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|i_btn_pressed" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[50] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|o_btn_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[51] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[52] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[10]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[53] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[11]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[54] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[12]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[55] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[13]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[56] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[14]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[57] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[15]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[58] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[16]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[59] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[17]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[60] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[18]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[61] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[19]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[62] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[63] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[20]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[64] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[21]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[65] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[22]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[66] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[23]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[67] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[24]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[68] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[25]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[69] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[26]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[70] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[27]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[71] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[72] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[73] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[4]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[74] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[5]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[75] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[6]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[76] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[7]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[77] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[8]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[78] -to "btn_debouncer:btn_debouncer_inst|btn_hold_activator:btn_hold_activator_plus_5|one_second_counter[9]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[79] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_btn_reset" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[80] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_btn_reset_prev" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[81] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[82] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[83] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[84] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[85] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns_prev[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[86] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns_prev[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[87] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns_prev[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[88] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|i_control_btns_prev[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[89] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|o_btn_reset_posedge" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[90] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|o_control_btns_posedge[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[91] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|o_control_btns_posedge[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[92] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|o_control_btns_posedge[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[93] -to "btn_debouncer:btn_debouncer_inst|btn_posedge:btn_posedge_inst|o_control_btns_posedge[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[94] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_minus_1" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[95] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_minus_5" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[96] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_minus_5_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[97] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_plus_1" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[98] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_plus_5" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[99] -to "btn_debouncer:btn_debouncer_inst|o_btn_metronome_plus_5_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[100] -to "btn_debouncer:btn_debouncer_inst|o_btn_reset" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[101] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[102] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[10]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[103] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[11]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[104] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[12]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[105] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[13]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[106] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[14]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[107] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[15]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[108] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[16]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[109] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[17]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[110] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[18]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[111] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[19]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[112] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[113] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[20]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[114] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[21]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[115] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[22]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[116] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[23]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[117] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[24]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[118] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[25]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[119] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[26]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[120] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[27]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[121] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[28]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[122] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[29]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[123] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[124] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[30]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[125] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[31]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[126] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[32]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[127] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[33]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[128] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[129] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[4]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[130] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[5]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[131] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[6]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[132] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[7]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[133] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[8]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[134] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|bpm_counter_adder:bpm_counter_adder_inst|o_bpm_counter_adder[9]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[135] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_minus_1" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[136] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_minus_5" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[137] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_minus_5_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[138] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_plus_1" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[139] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_plus_5" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[140] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|i_btn_plus_5_hold" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[141] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[0]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[142] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[10]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[143] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[11]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[144] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[12]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[145] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[13]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[146] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[14]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[147] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[15]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[148] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[16]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[149] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[17]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[150] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[18]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[151] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[19]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[152] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[1]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[153] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[20]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[154] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[21]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[155] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[22]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[156] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[23]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[157] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[24]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[158] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[25]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[159] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[26]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[160] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[27]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[161] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[28]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[162] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[29]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[163] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[2]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[164] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[30]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[165] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[31]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[166] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[32]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[167] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[33]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[168] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[3]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[169] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[4]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[170] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[5]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[171] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[6]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[172] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[7]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[173] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[8]" -section_id signal_tap_input
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[174] -to "metronome:metronome_inst|bpm_counter:bpm_counter_inst|o_bpm_counter[9]" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_BLOCK_TYPE=AUTO" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_DATA_BITS=175" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=175" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=175" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_INFO=805334528" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_POWER_UP_TRIGGER=0" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=547" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SEGMENT_SIZE=256" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ATTRIBUTE_MEM_MODE=OFF" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_FLOW_USE_GENERATED=0" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_BITS=11" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_BUFFER_FULL_STOP=1" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_CURRENT_RESOURCE_WIDTH=1" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INCREMENTAL_ROUTING=1" -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[0] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[1] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[2] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[3] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[4] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[5] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[6] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[7] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[8] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[9] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[10] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[11] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[12] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[13] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[14] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[15] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[16] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[17] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[18] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[19] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[20] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[21] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[22] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[23] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[25] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[26] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[27] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[28] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[29] -to signal_tap_input|vcc -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[30] -to signal_tap_input|gnd -section_id signal_tap_input
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[31] -to signal_tap_input|vcc -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL=1" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SAMPLE_DEPTH=256" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_IN_ENABLED=0" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_PIPELINE=0" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_PIPELINE=0" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_COUNTER_PIPELINE=0" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id signal_tap_input
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id signal_tap_input
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name SLD_FILE db/signal_tap_uart_auto_stripped.stp
+set_global_assignment -name SLD_FILE db/signal_tap_input_auto_stripped.stp

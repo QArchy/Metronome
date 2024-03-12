@@ -9,8 +9,10 @@ module btn_debouncer(
 	
     output 		 	o_btn_metronome_plus_1,
     output 		 	o_btn_metronome_plus_5,
+    output 		 	o_btn_metronome_plus_5_hold,
     output 		 	o_btn_metronome_minus_1,
-    output 		 	o_btn_metronome_minus_5
+    output 		 	o_btn_metronome_minus_5,
+    output 		 	o_btn_metronome_minus_5_hold
 );
 	
 	wire			btn_reset_posedge;
@@ -24,33 +26,47 @@ module btn_debouncer(
 	);
 	
 	btn_activator btn_activator_reset(
-		.i_clk(i_clk),									//	input 	i_clk,			
-		.i_btn_posedge(btn_reset_posedge),				//	input 	i_btn_posedge,	
-		.o_btn(o_btn_reset)								//	output 	o_btn			
+		.i_clk(i_clk),								//	input 	i_clk,			
+		.i_btn_posedge(btn_reset_posedge),			//	input 	i_btn_posedge,	
+		.o_btn(o_btn_reset)							//	output 	o_btn			
 	);	
 		
 	btn_activator btn_activator_plus_1(	
-		.i_clk(i_clk),									//	input 	i_clk,			
-		.i_btn_posedge(control_btns_posedge[0]),		//	input 	i_btn_posedge,	
-		.o_btn(o_btn_metronome_plus_1)					//	output 	o_btn			
+		.i_clk(i_clk),								//	input 	i_clk,			
+		.i_btn_posedge(control_btns_posedge[0]),	//	input 	i_btn_posedge,	
+		.o_btn(o_btn_metronome_plus_1)				//	output 	o_btn			
 	);	
 		
 	btn_activator btn_activator_plus_5(	
-		.i_clk(i_clk),									//	input 	i_clk,			
-		.i_btn_posedge(control_btns_posedge[1]),		//	input 	i_btn_posedge,	
-		.o_btn(o_btn_metronome_plus_5)					//	output 	o_btn			
+		.i_clk(i_clk),								//	input 	i_clk,			
+		.i_btn_posedge(control_btns_posedge[1]),	//	input 	i_btn_posedge,	
+		.o_btn(o_btn_metronome_plus_5)				//	output 	o_btn			
 	);	
 		
 	btn_activator btn_activator_minus_1(	
-		.i_clk(i_clk),									//	input 	i_clk,			
-		.i_btn_posedge(control_btns_posedge[2]),		//	input 	i_btn_posedge,	
-		.o_btn(o_btn_metronome_minus_1)					//	output 	o_btn			
+		.i_clk(i_clk),								//	input 	i_clk,			
+		.i_btn_posedge(control_btns_posedge[2]),	//	input 	i_btn_posedge,	
+		.o_btn(o_btn_metronome_minus_1)				//	output 	o_btn			
 	);	
 		
 	btn_activator btn_activator_minus_5(	
-		.i_clk(i_clk),									//	input 	i_clk,			
-		.i_btn_posedge(control_btns_posedge[3]),		//	input 	i_btn_posedge,	
-		.o_btn(o_btn_metronome_minus_5)					//	output 	o_btn			
+		.i_clk(i_clk),								//	input 	i_clk,			
+		.i_btn_posedge(control_btns_posedge[3]),	//	input 	i_btn_posedge,	
+		.o_btn(o_btn_metronome_minus_5)				//	output 	o_btn			
+	);
+	
+	btn_hold_activator btn_hold_activator_plus_5(
+		.i_clk(i_clk),								//	input 		i_clk,			
+		.i_btn(i_control_btns[1]),					//	input 		i_btn,			
+		.i_btn_pressed(o_btn_metronome_plus_5),		//	input 		i_btn_pressed,	
+		.o_btn_hold(o_btn_metronome_plus_5_hold)	//	output reg 	o_btn_hold		
+	);
+	
+	btn_hold_activator btn_hold_activator_minus_5(
+		.i_clk(i_clk),								//	input 		i_clk,			
+		.i_btn(i_control_btns[3]),					//	input 		i_btn,			
+		.i_btn_pressed(o_btn_metronome_minus_5),	//	input 		i_btn_pressed,	
+		.o_btn_hold(o_btn_metronome_minus_5_hold)	//	output reg 	o_btn_hold		
 	);
 	
 endmodule
